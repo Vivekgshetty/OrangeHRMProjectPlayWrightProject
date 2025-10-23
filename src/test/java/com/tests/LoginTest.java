@@ -15,9 +15,9 @@ public class LoginTest extends TestBase {
 
     @Test
     public void testSuccessfulLogin() {
-//        page.waitForSelector("text=Dashboard", new Page.WaitForSelectorOptions()
-//                .setState(WaitForSelectorState.VISIBLE)
-//                .setTimeout(60000));
+        page.waitForSelector("text=Dashboard", new Page.WaitForSelectorOptions()
+                .setState(WaitForSelectorState.VISIBLE)
+                .setTimeout(30000));
         LoginPage loginPage = new LoginPage(page);
         loginPage.login(userName, password);
         
