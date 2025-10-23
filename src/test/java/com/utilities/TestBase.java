@@ -17,8 +17,9 @@ public class TestBase {
     public String userName = Readconfig.readPropertyFileData("userName", "config");
     public String password = Readconfig.readPropertyFileData("password", "config");
 
-    @BeforeMethod
     @Parameters("browser")
+    @BeforeMethod
+    
     public void setUp(String browserName) {
         playwright = Playwright.create();
 
