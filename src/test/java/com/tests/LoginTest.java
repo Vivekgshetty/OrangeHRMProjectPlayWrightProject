@@ -1,5 +1,7 @@
 package com.tests;
 
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.WaitForSelectorState;
 import com.pages.AdminPage;
 import com.pages.DeleteUserPage;
 import com.pages.EditUserPage;
@@ -14,6 +16,10 @@ public class LoginTest extends TestBase {
     public void testSuccessfulLogin() {
         LoginPage loginPage = new LoginPage(page);
         loginPage.login(userName, password);
+        
+        page.waitForSelector("text=Dashboard", new Page.WaitForSelectorOptions()
+                .setState(WaitForSelectorState.VISIBLE)
+                .setTimeout(30000));
 
         AdminPage adminPage = new AdminPage(page);
 
