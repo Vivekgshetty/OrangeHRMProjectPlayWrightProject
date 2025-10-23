@@ -1,5 +1,6 @@
 package com.tests;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitForSelectorState;
 import com.pages.AdminPage;
@@ -16,13 +17,13 @@ public class LoginTest extends TestBase {
     @Test
     public void testSuccessfulLogin() {
 
-page.waitForSelector("text=Dashboard", new Page.WaitForSelectorOptions()
-                .setState(WaitForSelectorState.VISIBLE)
-                .setTimeout(60000));
+
         LoginPage loginPage = new LoginPage(page);
         loginPage.login(userName, password);
         
-
+        page.waitForSelector("text=Dashboard", new Page.WaitForSelectorOptions()
+                .setState(WaitForSelectorState.VISIBLE)
+                .setTimeout(30000));
         AdminPage adminPage = new AdminPage(page);
 
         String employeeName = "Manisha eclips Yadav";
@@ -33,8 +34,15 @@ page.waitForSelector("text=Dashboard", new Page.WaitForSelectorOptions()
         String status = "Enabled";
 
         adminPage.admininput(employeeName, newUsername, newPassword, confirmPassword, userRole, status);
+        page.locator("text=/successfully saved/i").waitFor(
+        	    new Locator.WaitForOptions()
+        	        .setTimeout(60000));
+ 
+        
         SearchPage searchPage = new SearchPage(page);
         searchPage.searchUser(newUsername, "Admin", "Enabled");
+        
+        
         
         EditUserPage editUserPage = new EditUserPage(page);
         editUserPage.editUserStatus("Disabled"); 
