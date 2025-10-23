@@ -11,15 +11,16 @@ import com.utilities.TestBase;
 import org.testng.annotations.Test;
 
 public class LoginTest extends TestBase {
+	
 
     @Test
     public void testSuccessfulLogin() {
-        LoginPage loginPage = new LoginPage(page);
-        loginPage.login(userName, password);
-        
         page.waitForSelector("text=Dashboard", new Page.WaitForSelectorOptions()
                 .setState(WaitForSelectorState.VISIBLE)
                 .setTimeout(30000));
+        LoginPage loginPage = new LoginPage(page);
+        loginPage.login(userName, password);
+        
 
         AdminPage adminPage = new AdminPage(page);
 
