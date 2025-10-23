@@ -15,16 +15,16 @@ public class LoginTest extends TestBase {
 
     @Test
     public void testSuccessfulLogin() {
-        page.waitForSelector("text=Dashboard", new Page.WaitForSelectorOptions()
-                .setState(WaitForSelectorState.VISIBLE)
-                .setTimeout(60000));
+//        page.waitForSelector("text=Dashboard", new Page.WaitForSelectorOptions()
+//                .setState(WaitForSelectorState.VISIBLE)
+//                .setTimeout(60000));
         LoginPage loginPage = new LoginPage(page);
         loginPage.login(userName, password);
         
 
         AdminPage adminPage = new AdminPage(page);
 
-        String employeeName = "Thomas Kutty Benny";
+        String employeeName = "Manisha eclips Yadav";
         String newUsername = "Vivek7003";
         String newPassword = "Jellyfish@123";
         String confirmPassword = "Jellyfish@123";

@@ -20,7 +20,7 @@ public class TestBase {
     @Parameters("browser")
     @BeforeMethod
     
-    public void setUp(String browserName) {
+    public void setUp(@Optional("chromium") String browserName ){
         playwright = Playwright.create();
 
         switch (browserName.toLowerCase()) {
